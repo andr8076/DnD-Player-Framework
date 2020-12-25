@@ -32,11 +32,8 @@
 
 <div class="rawcontainer">
   <div class="row">
-    <div class="col-sm-12">
-      <h2>New Character: {{$character->name}} <small>By {{Auth::user()->username}}<br>Step 2: Content</small></h2>
-      <hr>
-    </div>
     <div class="col-xs-12 col-sm-4 contentcenter">
+      <h3>Create Collums</h3><hr>
       <div class="smaller">
         <button onclick="reloadiframe();" class="btn btn-primary btn-block">Refresh Preview</button>
         <h4 class="pull-left">Add boxs</h4>
@@ -45,7 +42,7 @@
           {{ Form::text('title', '', array('class' => 'form-control', 'id' => 'box_title')) }}
           {{ Form::select('side', array("null" => 'Select a Side', '0' => 'Left', '1' => 'Right'), '', array('class' => 'form-control', 'id' => 'box_side'))}}
         {{ Form::close() }}
-
+        <br>
         <button onclick="postbox();" class="btn btn-primary">test</button>
         <hr>
         <h4 class="pull-left">Add content to box</h4>
@@ -56,12 +53,15 @@
           {{ Form::text('title', '', array('class' => 'form-control', 'id' => 'content_title')) }}
           {{ Form::textarea('text', '', array('class' => 'form-control', 'id' => 'content_text', 'style' => 'height:100px;')) }}
         {{ Form::close() }}
-
-        <button onclick="postcontent();" class="btn btn-primary">test</button>
+        <br>
+        <button onclick="postcontent();" class="btn btn-primary">Save</button>
+        <hr>
         <a href="/" class="btn btn-primary btn-block">Finish Character</a>
       </div>
     </div>
     <div class="col-xs-12 col-sm-8 contentcenter iframeparent">
+      <h2 style="text-align:left;">New Character: {{$character->name}} <small>By {{Auth::user()->username}}<br>Step 2: Content</small></h2>
+      <hr>
       <iframe id="CharacterPreview" loading="eager" src="{{url("/character/".$character->id)}}"></iframe>
     </div>
     <div class="col-xs-12">

@@ -140,8 +140,22 @@
           @endif
       @endforeach
     </div>
+    <div class="col-sm-4" >
+        <div class="">
+          <h4 style="text-align:center">Inventory</h4>
+          <hr>
+        @foreach ($items as $key => $item)
+          @if ($item->active)
+            <div class="">
+              - {{$item->getItemName()}}<br>
+            </div>
+          @endif
+        @endforeach
+      </div>
+    </div>
   </div>
 </div>
+
 
 
   {{-- <style media="screen">

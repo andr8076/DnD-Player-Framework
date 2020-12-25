@@ -8,6 +8,6 @@ class Inventory extends Model {
       protected $table = "inventory";
 
       public function getItemName() {
-        return item::find($this->item_id)->name;
+        return Item::find($this->item_id)->name;
       }
 }

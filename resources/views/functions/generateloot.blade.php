@@ -26,7 +26,7 @@
               <select id="giveloot{{$key+1}}" onchange="giveLoot({{$key+1}})" class="form-control" style="width:120px;">
                 <option value="0">Give loot:</option>
                 @foreach ($players as $key => $player)
-                  <option value="{{$player->id}}-{{$item->id}}-{{$item->level}}">Give to {{$player->name}}</option>
+                  <option value="{{$player->id}}-{{$item->id}}">Give to {{$player->name}}</option>
                 @endforeach
               </select>
             </td>
@@ -44,20 +44,19 @@
     data = rawdata.split("-");
     user1 = data[0];
     item1 = data[1];
-    level1 = data[2];
     $.ajax({
-          url: "/giveloot",
-          type:"POST",
-          data: { character: user1, item: item1, level: level1,},
-          success:function(data){
-            //success code...
-            $("#giveloot" + selectnumber + " option[value='" + rawdata + "']").each(function() {
-                $(this).remove();
-            });
-            $("#giveloot" + selectnumber).prop('selectedIndex',0);
-          },error:function(){
-            alert("AJAX error. Please contact the system admin.");
-          }
+        url: "/giveloot",
+        type:"POST",
+        data: { character: user1, item: item1, _token: "{{ csrf_token() }}"},
+        success:function(data){
+          //success code...
+          $("#giveloot" + selectnumber + " option[value='" + rawdata + "']").each(function() {
+              $(this).remove();
+          });
+          $("#giveloot" + selectnumber).prop('selectedIndex',0);
+        },error:function(ts){
+          alert("AJAX error. Please contact the system admin.");
+        }
       });
   }
 </script>

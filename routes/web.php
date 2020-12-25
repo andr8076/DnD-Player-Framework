@@ -30,9 +30,10 @@ Route::group(array('before' => 'auth'), function(){
 	Route::get('/stories/npc/new/{id}', 'StoryController@createnpc');
 	Route::get('/stories/npc/{id}', 'StoryController@editnpc');
 
-
   Route::get('/DM/{game}', 'GameController@DMaster');
   Route::get('/DM/{game}/loot', 'GameController@generateLoot');
+	Route::get('/map/{id}', 'GameController@showmap');
+	Route::get('/inventory/{id}', 'GameController@playersInventory');
 
 	Route::get('/delete/stories/locations/{story}/{id}', 'EraseController@deletelocation');
 	Route::get('/delete/stories/{id}', 'EraseController@deletestory');
@@ -41,9 +42,14 @@ Route::group(array('before' => 'auth'), function(){
   //ajax START routes
 	Route::get('/getboxlist/{id}', 'CharacterController@getboxlist');
 	Route::get('/getDMStory/{id}', 'GameController@getDMStory');
-	Route::get('/getDMStoryitem/{id}', 'GameController@getDMStoryitem');
+	Route::get('/getDMStoryBox/{id}', 'GameController@getDMStoryBox');
+	Route::get('/getDMStoryNPC/{id}', 'GameController@getDMStoryNPC');
+	Route::get('/getDMStoryItem/{id}', 'GameController@getDMStoryItem');
+	// Route::get('/getDMStoryNote/{id}', 'GameController@getDMStoryNote');
+	Route::get('/getDMStoryImg/{id}', 'GameController@getDMStoryImg');
 
-
+	Route::post('/deleteitem', array('as'=>'post', 'uses'=>'GameController@eraseitem'));
+	Route::post('/returnitem', array('as'=>'post', 'uses'=>'GameController@returnitem'));
   Route::post('/giveloot', array('as'=>'post', 'uses'=>'GameController@giveloot'));
 	Route::post('/characterbox', array('as'=>'post', 'uses'=>'CharacterController@characterbox', 'as' => 'characterbox'));
 	Route::post('/charactercontent', array('as'=>'post', 'uses'=>'CharacterController@charactercontent', 'as' => 'charactercontent'));

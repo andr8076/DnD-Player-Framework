@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Auth;
-Use Redirect;
+use Redirect;
+use Request;
 use App\Character;
 use App\Inventory;
 use App\Item;
 use App\Story;
 use App\Storyitems;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
 
 class EraseController extends Controller {
 

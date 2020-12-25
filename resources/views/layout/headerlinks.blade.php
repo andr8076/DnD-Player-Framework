@@ -1,5 +1,6 @@
 <meta charset="utf-8">
 <title>@yield('title')</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content ="width=device-width,initial-scale=1,user-scalable=yes" />
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
