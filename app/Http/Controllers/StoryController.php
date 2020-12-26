@@ -180,7 +180,7 @@ class StoryController extends Controller {
 						$extension = $request->image->extension();
 						$request->image->move(public_path('img/storys/'), $filename.".".$extension);
 						$url = "/img/storys/".$filename.".".$extension;
-						unlink(substr($data->img, 1));
+						@unlink(substr($data->img, 1));
 						$data->img = $url;
 					}
 				}

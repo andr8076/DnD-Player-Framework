@@ -38,7 +38,7 @@
     <h4>Active games</h4>
     <div class="rightyscroll">
       @foreach ($data['activegames'] as $key => $game)
-        <a class="btn btn-default siteitem" href="/DM/{{$game->id}}">{{$game->name}} game</a>
+        <a class="btn btn-default siteitem" href="/DM/{{$game->id}}">{{$game->name}}</a>
       @endforeach
     </div>
   <hr>
@@ -56,6 +56,15 @@
       @foreach ($data['characters'] as $key => $profile)
         <a class="btn btn-default siteitem" href="/character/{{$profile->id}}">{{$profile->name}}<br><small>{{$profile->race}}</small></a>
       @endforeach
+    </div>
+  <hr>
+    <h4>Users</h4>
+    <div class="rightyscroll">
+      <a class="btn btn-info siteitem" href="/user/new">New<br>Character</a>
+      @foreach ($data['users'] as $key => $user)
+        <a class="btn btn-default siteitem">{{$user->username}}</a>
+      @endforeach
+      <a class="btn btn-default siteitem" href="/logout">Logout</a>
     </div>
   <br>
 </div>

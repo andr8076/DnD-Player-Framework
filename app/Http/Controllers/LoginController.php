@@ -6,6 +6,7 @@ use Auth;
 use Request;
 Use Redirect;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -50,6 +51,37 @@ class LoginController extends Controller {
 			} else {
 				return Redirect::to('/login')->withError('Forkert Brugernavn eller Kodeord');
 			}
+		}
+	}
+
+	public function register() {
+		return \View::make('users.newuser');
+	}
+	public function postRegister() {
+		$messages = array(
+			'same' => 'The passwords must match.',
+			'min' => 'This field must be at least 6 characters.',
+		);
+		$validator = Validator::make(Request::all(), array(
+			'username' => 'required|unique:users|min:6|regex:/^\S*$/u',
+			'pass1' => 'required|min:6|same:pass2',
+			'pass2' => 'required|min:6|same:pass1'
+		), $messages);
+		if ($validator->fails()) {
+			return Redirect::to('/user/new')
+				->withErrors($validator->messages())
+				->withInput(Request::all());
+		} else {
+			$user = new User;
+			$user->username = Request::get('username');
+			$user->password = Hash::make(Request::get('pass1'));
+			$user->created_by = Auth::user()->id;
+			$user->save();
+		}
+		if ($user) {
+			return Redirect::to('/');
+		} else {
+			return "der er opstået en fejl";
 		}
 	}
 	public function logout() {

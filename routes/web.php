@@ -15,6 +15,7 @@ Route::group(array('before' => 'guest'), function(){
 // Logged in
 Route::group(array('before' => 'auth'), function(){
   Route::get('/logout', 'LoginController@logout');
+	Route::get('/user/new', 'LoginController@register');
   Route::get('/', 'HomeController@index');
 	Route::get('/character/new', 'CharacterController@newprofile');
 	Route::get('/character/box/{id}', 'CharacterController@managecollums');
@@ -32,6 +33,7 @@ Route::group(array('before' => 'auth'), function(){
 
   Route::get('/DM/{game}', 'GameController@DMaster');
   Route::get('/DM/{game}/loot', 'GameController@generateLoot');
+	Route::get('/DM/active/{id}', 'GameController@makestoryactive');
 	Route::get('/map/{id}', 'GameController@showmap');
 	Route::get('/inventory/{id}', 'GameController@playersInventory');
 
@@ -57,6 +59,8 @@ Route::group(array('before' => 'auth'), function(){
 
   Route::group(array('before' => 'csrf'), function(){
   	//Route::post('/postimage', array('uses' => 'HomeController@postimage', 'as' => 'postimage'));
+		Route::post('/postaddplayer', array('uses' => 'GameController@postaddplayer', 'as' => 'postaddplayer'));
+		Route::post('/postregister', array('uses' => 'LoginController@postregister', 'as' => 'postregister'));
 		Route::post('/postnewcharacter', array('uses' => 'CharacterController@postnewcharacter', 'as' => 'postnewcharacter'));
 		Route::post('/postnewstory', array('uses' => 'StoryController@postnewstory', 'as' => 'postnewstory'));
 		Route::post('/postlocations', array('uses' => 'StoryController@postlocations', 'as' => 'postlocations'));

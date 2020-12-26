@@ -146,7 +146,8 @@
     <div class="row" style="margin: 0px;">
       <div class="col-sm-12 col-md-8 DMblock" {{--style="min-height: 280px"--}}>
         <div class="alert alert-warning" role="alert">
-          This is a early Alpha build. Objects and features does not represent final product.
+          This is a early Alpha build. Objects and features does not represent final product.<br>
+          <b>Phone use is not recommended on this page.</b>
         </div>
         <div class="panel panel-default">
           <div class="panel-body" id="storybox">

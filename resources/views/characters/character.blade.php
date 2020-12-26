@@ -71,7 +71,15 @@
       <br>
       Charisma
       {{$profile->CHA}}
-      <br>
+      <hr>
+      @if (empty($profile->game_id))
+        {{ Form::open(array('route' => 'postaddplayer')) }}
+            {{ Form::label('Add 2 Game') }}
+            {{ Form::hidden('chrID', $profile->id) }}
+            {{ Form::text('gameid', '', array('class' => 'form-control', 'required' => 'required')) }}
+            {{ Form::submit('add', array('class' => 'btn btn-info btn-block')) }}
+        {{ Form::close() }}
+      @endif
     </div>
     <div class="col-sm-3" >
       +{{$profile->proficiency_bonus}} PROFICIENCY BONUS

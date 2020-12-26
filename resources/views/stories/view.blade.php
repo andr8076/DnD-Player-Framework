@@ -55,7 +55,8 @@
         </div>
         <div class="col-sm-3">
           <a class="btn btn-danger pull-right" href="/delete/stories/{{$story->id}}">Delete Story</a>
-          <a class="btn btn-info pull-right" href="#">Edit Order</a>
+          <a class="btn btn-info pull-right" onclick="alert('comming soon');" href="#">Edit Order</a>
+          <a class="btn btn-success pull-right" href="/DM/active/{{$story->id}}">Make active game</a>
         </div>
       </div>
     </div>

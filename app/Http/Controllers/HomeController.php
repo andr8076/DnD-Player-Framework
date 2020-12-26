@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Redirect;
 use App\Games;
+use App\User;
 use App\Story;
 use App\Character;
 
@@ -18,10 +19,12 @@ class HomeController extends Controller {
       $activegames = Games::where('user_id', Auth::user()->id)->get();
       $storys = Story::where('user_id', Auth::user()->id)->get();
       $characters = Character::where('user_id', Auth::user()->id)->get();
+      $users = User::get();
 
       $data = array('activegames' => $activegames,
                          'storys' => $storys,
-                     'characters' => $characters);
+                     'characters' => $characters,
+                          'users' => $users);
 
 
         return view('index')->with('data', $data);

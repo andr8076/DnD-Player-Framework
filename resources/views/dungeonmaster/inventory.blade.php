@@ -26,10 +26,10 @@
                         @foreach ($generalitems as $key => $value)
                           <option value="{{$player->id}}.{{$value->id}}">{{$value->name}}</option>
                         @endforeach
-                        <option value="0" disabled>--- Custom Story items ---</option>
-                        @foreach ($storyitems as $key => $value)
+                        <option value="0" disabled>--- Custom Story items (coming soon) ---</option>
+                        {{-- @foreach ($storyitems as $key => $value)
                           <option value="{{$player->id}}.{{$value->id}}">{{$value->name}}</option>
-                        @endforeach
+                        @endforeach --}}
                       </select>
                     </div>
                   </div>

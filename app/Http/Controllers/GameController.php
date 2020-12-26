@@ -72,6 +72,14 @@ class GameController extends Controller {
 					->with('generalitems', $items)
 					->with('storyitems', $storyitems);
 	}
+	public function makestoryactive($id) {
+		$game = New Games;
+		$game->user_id = Auth::user()->id;
+		$game->story_id = $id;
+		$game->name = "Game_name." . $id;
+		$game->save();
+		return Redirect::to('/DM/' . $game->id);
+	}
   public function giveloot() {
 		//CHECK IF CHARACTER IS IN GAME BEFORE GIVING
 
@@ -145,5 +153,12 @@ class GameController extends Controller {
 		$item = Inventory::find(Request::get('returnid'));
 		$item->active = 1;
 		$item->save();
+	}
+	//------- //temp
+	public function postaddplayer() {
+		$item = Character::find(Request::get('chrID'));
+		$item->game_id = Request::get('gameid');
+		$item->save();
+		return Redirect::to('/DM/' . Request::get('gameid'));
 	}
 }
